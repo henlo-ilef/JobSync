@@ -4,14 +4,14 @@ const Home = () => {
   return (
     <section className="w-full flex-center flex-col">
         <h1 className="head_text text-center">
-            Discover & Share
+            Calculate & Share
             <br className="max-md:hidden" />
-            <span className="orange_gradient text-center">AI-Powered prompts</span>
+            <span className="orange_gradient text-center">Resume Scores</span>
         </h1>
         <p className="desc text-center">
-            Promptopia is an open 
-            source AI prompting tool for
-             modern world to discover, create and share creative prompts
+            JobSync is an open 
+            source score calculating tool for
+            modern world to calculate resume summary scores based on their similarity to job offers on Glassdoor and share their resume summaries with other candidates and recruiters.
         </p>
         <Feed />
     </section>

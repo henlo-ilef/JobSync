@@ -1,11 +1,11 @@
 "use client";
 import { useState, useEffect } from 'react'
-import PromptCard from './PromptCard';
-const PromptCardList = ({data, handleTagClick}) => {
+import PostCard from './PostCard';
+const PostCardList = ({data, handleTagClick}) => {
   return(
     <div className="mt-16 prompt_layout">
         {data.map((post) => (
-          <PromptCard
+          <PostCard
           key={post._id}
           post={post}
           handleTagClick={handleTagClick}
@@ -24,7 +24,7 @@ const Feed = () => {
    const [searchedResults, setSearchedResults] = useState([]);
   useEffect(() => {
     const fetchPosts = async () => {
-      const response = await fetch('/api/prompt');
+      const response = await fetch('/api/post');
       const data = await response.json();
 
 
@@ -33,12 +33,12 @@ const Feed = () => {
     fetchPosts();
   }, []);
 
-  const filterPrompts = (searchText) => {
+  const filterPosts = (searchText) => {
         const regex = new RegExp(searchText, 'i');
         return posts.filter(item =>
           regex.test(item.creator.username) ||
           regex.test(item.tag) ||
-          regex.test(item.prompt)
+          regex.test(item.summary)
           );
     }
   const handleSearchChange = (e) => {
@@ -46,7 +46,7 @@ const Feed = () => {
     setSearchText(e.target.value);
     setSearchTimeout(
       setTimeout(() => {
-        const searchResult = filterPrompts(e.target.value);
+        const searchResult = filterPosts(e.target.value);
         setSearchedResults(searchResult);
       },500)
     )
@@ -54,7 +54,7 @@ const Feed = () => {
 
   const handleTagClick = (tagName) => {
     setSearchText(tagName);
-    const searchResult = filterPrompts(tagName);
+    const searchResult = filterPosts(tagName);
     setSearchedResults(searchResult);
 
   }
@@ -71,12 +71,12 @@ const Feed = () => {
           />
       </form>
       { searchText ? (
-      <PromptCardList
+      <PostCardList
         data = {searchedResults}
         handleTagClick={handleTagClick}
       />)
       :(
-        <PromptCardList
+        <PostCardList
         data = {posts}
         handleTagClick={handleTagClick}
       />

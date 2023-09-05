@@ -4,8 +4,8 @@ import Provider from '@components/Provider';
 
 
 export const metadata = {
-    title: 'Promptopia',
-    description: 'Discover & Share AI Prompts'
+    title: 'JobSync',
+    description: 'Discover the score of jobs that match your skills'
 }
 
 const RootLayout = ({children}) => {
