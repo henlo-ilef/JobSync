@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sat Sep 23 15:17:43 2023
+Created on Sat Jun 23 15:17:43 2023
 
 @author: henloIlef
 """
@@ -35,6 +35,7 @@ X_sm = X = sm.add_constant(X)
 model = sm.OLS(y, X.astype(float))
 print(model.fit().summary())
 
+#linear regression
 from sklearn.linear_model import LinearRegression, Lasso
 from sklearn.model_selection import cross_val_score
 
@@ -103,7 +104,7 @@ print(tpred_lm)
 print(tpred_lml)
 print(tpred_rf)
 
-
+#production  
 import pickle
 pickl = {'model': gs.best_estimator_}
 pickle.dump( pickl, open( 'model_file' + ".p", "wb" ) )
